@@ -16,7 +16,8 @@ public class LinksTests extends BaseTests {
         elementsPage.openElementsPage();
         elementsPage.clickElementLinks();
         linksPage.clickHomeLink();
-        //Assert.assertEquals(getDriver().switchTo().window().getCurrentUrl(), "https://demoqa.com/");
+        driver.switchTo().window(driver.getWindowHandle(1));
+        Assert.assertEquals(getDriver().getCurrentUrl(), "https://demoqa.com/");
     }*/
 
     /*@Test(priority = 2)
