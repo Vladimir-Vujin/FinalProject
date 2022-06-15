@@ -3,7 +3,7 @@ package tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CardTests extends BaseTests {
+public class CardsTests extends BaseTests {
 
     // click on 'Elements' card category to confirm that it opens in a new page (URL) and the main header title is adequate
     @Test(priority = 1)

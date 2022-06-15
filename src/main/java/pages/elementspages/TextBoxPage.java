@@ -1,12 +1,11 @@
-package pages.elementspage;
+package pages.elementspages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.BasePage;
+import pages.defaultpages.BasePage;
 
 public class TextBoxPage extends BasePage {
 
@@ -15,13 +14,13 @@ public class TextBoxPage extends BasePage {
     private By currentAddressTextBox = By.id("currentAddress");
     private By permanentAddressTextBox = By.id("permanentAddress");
     private By submitButton = By.id("submit");
-    //private By submitButton = By.xpath("//*[@id=\"submit\"]");
 
     private By frameTextBox = By.id("output");
     private By nameLabel = By.id("name");
     private By emailLabel = By.id("email");
-    private By currentAddressLabel = By.id("currentAddress");
-    private By permanentAddressLabel = By.id("permanentAddress");
+    private By currentAddressLabel = By.xpath("//*[@id=\"output\"]/div/p[3]");
+    private By permanentAddressLabel = By.xpath("//*[@id=\"output\"]/div/p[4]");
+
 
     public TextBoxPage(WebDriver driver, WebDriverWait driverWait) {
         super(driver, driverWait);
@@ -81,7 +80,36 @@ public class TextBoxPage extends BasePage {
         return getDriver().findElement(frameTextBox).isDisplayed();
     }
 
+    public WebElement getNameLabel(){
+        return getDriver().findElement(nameLabel);
+    }
 
+    public String nameLabelText(){
+        return getNameLabel().getText();
+    }
 
+    public WebElement getEmailLabel(){
+        return getDriver().findElement(emailLabel);
+    }
+
+    public String emailLabelText(){
+        return getEmailLabel().getText();
+    }
+
+    public WebElement getCurrentAddressLabel(){
+        return getDriver().findElement(currentAddressLabel);
+    }
+
+    public String currentAddressLabelText(){
+        return getCurrentAddressLabel().getText();
+    }
+
+    public WebElement getPermanentAddressLabel(){
+        return getDriver().findElement(permanentAddressLabel);
+    }
+
+    public String permanentAddressLabelText(){
+        return getPermanentAddressLabel().getText();
+    }
 
 }

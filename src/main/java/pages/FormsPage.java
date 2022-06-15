@@ -1,10 +1,10 @@
-package pages.forms;
+package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.base.BasePage;
+import pages.defaultpages.BasePage;
 
 public class FormsPage extends BasePage {
 
@@ -20,5 +20,9 @@ public class FormsPage extends BasePage {
 
     public String mainTitleGetText() {
         return getMainTitle().getText();
+    }
+
+    public String getFormsPageURL(){
+        return getDriver().getCurrentUrl();
     }
 }
