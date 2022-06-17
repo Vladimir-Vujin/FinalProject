@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.defaultpages.BasePage;
 
 import java.time.Duration;
+import java.util.List;
 
 public class LinksPage extends BasePage {
 
@@ -106,5 +107,13 @@ public class LinksPage extends BasePage {
 
     public String linkResponsetext(){
         return getLinkResponse().getText();
+    }
+
+    public String getURLForNewOpenTab() {
+
+        for(String handle : getDriver().getWindowHandles()) {
+            getDriver().switchTo().window(handle);
+        }
+        return getDriver().getCurrentUrl();
     }
 }

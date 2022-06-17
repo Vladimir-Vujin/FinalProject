@@ -14,6 +14,7 @@ public abstract class BasePage {
 
     private static final String HOME_URL = "https://demoqa.com/";
     private static final String ELEMENTS_URL = "https://demoqa.com/elements";
+    private static final String LOGIN_URL = "https://demoqa.com/login";
 
     public BasePage(WebDriver driver, WebDriverWait driverWait) {
         this.driver = driver;
@@ -42,6 +43,10 @@ public abstract class BasePage {
 
     public void openElementsPage() {
         driver.navigate().to(ELEMENTS_URL);
+    }
+
+    public void openLoginPage(){
+        driver.navigate().to(LOGIN_URL);
     }
 
     public void refreshPage() {

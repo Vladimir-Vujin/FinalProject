@@ -1,4 +1,4 @@
-package pages;
+package pages.bookstorepage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,6 +13,7 @@ public class LoginPage extends BasePage {
     private By passwordInputBox = By.id("password");
     private By loginButton = By.id("login");
     private By newUserButton = By.id("newUser");
+    private By labelInvalidUserInfo = By.className("mb-1");
 
     public LoginPage(WebDriver driver, WebDriverWait driverWait) {
         super(driver, driverWait);
@@ -34,6 +35,10 @@ public class LoginPage extends BasePage {
         return getDriver().findElement(newUserButton);
     }
 
+    public  WebElement getLabelInvalidUserInfo() {
+        return getDriver().findElement(labelInvalidUserInfo);
+    }
+
     public void inputUserName(String userName) {
         getUserNameInputBox().sendKeys(userName);
     }
@@ -48,6 +53,10 @@ public class LoginPage extends BasePage {
 
     public void clickNewUserButton() {
         getNewUserButton().click();
+    }
+
+    public String labelInvalidUserInfoText(){
+        return getLabelInvalidUserInfo().getText();
     }
 
     public void fillLoginForm(String userName, String password) {

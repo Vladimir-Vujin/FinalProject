@@ -1,6 +1,7 @@
-package pages;
+package pages.bookstorepage;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -10,6 +11,7 @@ public class BookStorePage extends BasePage {
 
     private By mainTitle = By.className("main-header");
     private By loginButton = By.id("login");
+    //private By elementLogin = By.id("item-0");
 
     public BookStorePage(WebDriver driver, WebDriverWait driverWait) {
         super(driver, driverWait);
@@ -23,6 +25,10 @@ public class BookStorePage extends BasePage {
         return getDriver().findElement(loginButton);
     }
 
+    /*public WebElement getElementLogin(){
+        return getDriver().findElement(elementLogin);
+    }*/
+
     public String getBookstorePageURL(){
         return getDriver().getCurrentUrl();
     }
@@ -34,4 +40,10 @@ public class BookStorePage extends BasePage {
     public void clickLoginButton() {
         getLoginButton().click();
     }
+
+   /* public void clickElementLogin(){
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
+        jsExecutor.executeScript("window.scrollBy(0,500)");
+        getElementLogin().click();
+    }*/
 }

@@ -82,4 +82,5 @@ public class ElementsPage extends BasePage {
         jsExecutor.executeScript("window.scrollBy(0,500)");
         getElementLinks().click();
     }
+
 }

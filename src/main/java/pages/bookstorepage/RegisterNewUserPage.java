@@ -1,6 +1,7 @@
-package pages;
+package pages.bookstorepage;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -8,17 +9,15 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.defaultpages.BasePage;
 
+import java.util.Iterator;
+import java.util.Set;
+
 public class RegisterNewUserPage extends BasePage {
 
-    // recaptcha-checkbox-unchecked
-    //  recaptcha-checkbox-checked
     private By firstNameInputBox = By.id("firstname");
     private By lastNameInputBox = By.id("lastname");
     private By userNameInputBox = By.id("userName");
     private By passwordInputBox = By.id("password");
-    private By captcha= By.id("recaptcha-anchor-label");
-    //private By captcha = By.id("rc-anchor-container");
-   // private By captcha = By.className("recaptcha-checkbox-border");
     private By registerButton = By.id("register");
 
     public RegisterNewUserPage(WebDriver driver, WebDriverWait driverWait) {
@@ -41,10 +40,6 @@ public class RegisterNewUserPage extends BasePage {
         return getDriver().findElement(passwordInputBox);
     }
 
-    public WebElement getCaptcha(){
-        return getDriver().findElement(captcha);
-    }
-
     public WebElement getRegisterButton(){
         return getDriver().findElement(registerButton);
     }
@@ -65,37 +60,35 @@ public class RegisterNewUserPage extends BasePage {
         getPasswordInputBox().sendKeys(password);
     }
 
-    public void clickCaptcha() {
-        getCaptcha().click();
-    }
-
     public void clickRegisterButton() {
         getRegisterButton().click();
     }
 
     public void fillRegisterForm(String firstName, String lastName, String userName, String password) {
 
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
+        jsExecutor.executeScript("window.scrollBy(0,500)");
 
-
-       /* inputFirstName(firstName);
+        inputFirstName(firstName);
         inputLastName(lastName);
         inputUserName(userName);
-        inputPassword(password);*/
-        //clickCaptcha();
+        inputPassword(password);
 
-        getDriverWait().until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[starts-with(@name,'a-')]")));
-        Actions action = new Actions(getDriver());
-        action.moveToElement(getDriver().findElement(By.cssSelector("div.recaptcha-checkbox-checkmark"))).click().perform();
+        String mainWindow = getDriver().getWindowHandle();
 
-        //action.moveToElement(getFirstNameInputBox()).click();
-        try {
-            Thread.sleep(2000);
+        getDriverWait().until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(
+                By.xpath("//iframe[starts-with(@name, 'a-') and starts-with(@src, 'https://www.google.com/recaptcha')]")));
+
+        getDriverWait().until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//div[@class='recaptcha-checkbox-border']"))).click();
+
+        getDriver().switchTo().window(mainWindow);
+
+       try {
+            Thread.sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        //wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[starts-with(@name,'a-')]")));
-        //getDriverWait().until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.recaptcha-checkbox-checkmark"))).click();
-        action.moveToElement(getRegisterButton()).click();
-        //clickRegisterButton();
+        clickRegisterButton();
     }
 }

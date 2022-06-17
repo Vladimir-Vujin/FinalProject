@@ -11,22 +11,39 @@ public class LinksTests extends BaseTests {
         elementsPage.openElementsPage();
         elementsPage.clickElementLinks();
     }
-    /*@Test(priority = 1)
+    @Test(priority = 1)
     public void testLinkHome(){
-        elementsPage.openElementsPage();
-        elementsPage.clickElementLinks();
         linksPage.clickHomeLink();
-        driver.switchTo().window(driver.getWindowHandle(1));
-        Assert.assertEquals(getDriver().getCurrentUrl(), "https://demoqa.com/");
-    }*/
 
-    /*@Test(priority = 2)
+        //Store ID of original window
+        String originalWindow = getDriver().getWindowHandle();
+
+        Assert.assertEquals(linksPage.getURLForNewOpenTab(), "https://demoqa.com/");
+
+        // Close new opened tab
+        getDriver().close();
+        // Return to original window
+        getDriver().switchTo().window(originalWindow);
+    }
+
+    @Test(priority = 2)
     public void testLinkHomeDynamic(){
-        elementsPage.openElementsPage();
-        elementsPage.clickElementLinks();
         linksPage.clickHomeDynamicLink();
-    }*/
 
+        //Store ID of original window
+        String originalWindow = getDriver().getWindowHandle();
+
+        Assert.assertEquals(linksPage.getURLForNewOpenTab(), "https://demoqa.com/");
+
+        // Close new opened tab
+        getDriver().close();
+        // Return to original window
+        getDriver().switchTo().window(originalWindow);
+    }
+
+    // IMPORTANT NOTES: **********************************************************************************
+    // COMMENT: IN THIS SCENARIO ALL TEST SHOULD BE FAIL BECAUSE THERE IS SPELLING MISTAKE IN LABEL 'staus'
+    // ***************************************************************************************************
     @Test(priority = 3)
     public void testCreatedLink() {
         linksPage.clickCreatedLink();

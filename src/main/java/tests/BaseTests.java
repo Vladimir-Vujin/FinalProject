@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import pages.*;
+import pages.bookstorepage.*;
 import pages.defaultpages.HomePage;
 import pages.elementspages.*;
 
@@ -33,6 +34,8 @@ public class BaseTests {
     WebTablesPage webTablesPage;
     ButtonsPage buttonsPage;
     LinksPage linksPage;
+    ProfilePage profilePage;
+    BooksPage booksPage;
 
     @BeforeClass
     public void setUp() {
@@ -61,6 +64,8 @@ public class BaseTests {
         this.webTablesPage = new WebTablesPage(driver, driverWait);
         this.buttonsPage = new ButtonsPage(driver, driverWait);
         this.linksPage = new LinksPage(driver, driverWait);
+        this.profilePage = new ProfilePage(driver, driverWait);
+        this.booksPage = new BooksPage(driver, driverWait);
     }
 
     //public WebDriver getDriver() {
