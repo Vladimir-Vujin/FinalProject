@@ -72,15 +72,18 @@ public class ElementsPage extends BasePage {
     }
 
     public void clickElementButtons(){
-        JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
-        jsExecutor.executeScript("window.scrollBy(0,500)");
+        //JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
+        //jsExecutor.executeScript("window.scrollBy(0,500)");
+        javaScriptScroll();
         getElementButtons().click();
     }
 
     public void clickElementLinks(){
-        JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
-        jsExecutor.executeScript("window.scrollBy(0,500)");
+        //JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
+        //jsExecutor.executeScript("window.scrollBy(0,500)");
+        javaScriptScroll();
         getElementLinks().click();
     }
+
 
 }

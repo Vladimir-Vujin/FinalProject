@@ -1,4 +1,4 @@
-package pages;
+package pages.widgetspage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -6,11 +6,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.defaultpages.BasePage;
 
-public class FormsPage extends BasePage {
+public class WidgetsPage extends BasePage {
 
     private By mainTitle = By.className("main-header");
 
-    public FormsPage(WebDriver driver, WebDriverWait driverWait) {
+    public WidgetsPage(WebDriver driver, WebDriverWait driverWait) {
         super(driver, driverWait);
     }
 
@@ -18,11 +18,11 @@ public class FormsPage extends BasePage {
         return getDriver().findElement(mainTitle);
     }
 
-    public String mainTitleGetText() {
-        return getMainTitle().getText();
+    public String getWidgetsPageURL(){
+        return getDriver().getCurrentUrl();
     }
 
-    public String getFormsPageURL(){
-        return getDriver().getCurrentUrl();
+    public String mainTitleGetText() {
+        return getMainTitle().getText();
     }
 }

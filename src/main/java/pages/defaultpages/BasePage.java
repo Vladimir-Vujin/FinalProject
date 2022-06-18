@@ -3,6 +3,7 @@ package pages.defaultpages;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -19,6 +20,11 @@ public abstract class BasePage {
     public BasePage(WebDriver driver, WebDriverWait driverWait) {
         this.driver = driver;
         this.driverWait = driverWait;
+    }
+
+    public void javaScriptScroll() {
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
+        jsExecutor.executeScript("window.scrollBy(0,500)");
     }
 
     //public WebDriver getDriver() {

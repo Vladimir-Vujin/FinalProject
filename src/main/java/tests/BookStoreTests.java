@@ -53,20 +53,10 @@ public class BookStoreTests extends BaseTests {
     @Test(priority = 5)
     public void deleteUserAccount(){
         homePage.openLoginPage();
-        /*try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }*/
+
         loginPage.fillLoginForm("Vladimir78", "Vlada78*");
         driverWait.until(ExpectedConditions.urlContains("profile"));
 
-        /*try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }*/
-       // getDriver().navigate().to("https://demoqa.com/profile");
         profilePage.clickDeleteAccountButton();
         profilePage.clickConfirmDeleteButtonOnModal();
 

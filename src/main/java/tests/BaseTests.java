@@ -1,15 +1,22 @@
 package tests;
 
 import lombok.Getter;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import pages.*;
+import pages.alertswindows.AlertsWindowsPage;
+import pages.alertswindows.AlertsPage;
+import pages.alertswindows.BrowserWindowsPage;
+import pages.alertswindows.SamplePage;
 import pages.bookstorepage.*;
 import pages.defaultpages.HomePage;
 import pages.elementspages.*;
+import pages.formspage.FormsPage;
+import pages.interactionspage.InteractionsPage;
+import pages.widgetspage.WidgetsPage;
 
 import java.time.Duration;
 
@@ -36,6 +43,11 @@ public class BaseTests {
     LinksPage linksPage;
     ProfilePage profilePage;
     BooksPage booksPage;
+    AlertsWindowsPage alertsFrameWindowsPage;
+    BrowserWindowsPage browserWindowsPage;
+    SamplePage samplePage;
+
+    Alert alert;
 
     @BeforeClass
     public void setUp() {
@@ -66,6 +78,9 @@ public class BaseTests {
         this.linksPage = new LinksPage(driver, driverWait);
         this.profilePage = new ProfilePage(driver, driverWait);
         this.booksPage = new BooksPage(driver, driverWait);
+        this.alertsFrameWindowsPage = new AlertsWindowsPage(driver, driverWait);
+        this.browserWindowsPage = new BrowserWindowsPage(driver,driverWait);
+        this.samplePage = new SamplePage(driver, driverWait);
     }
 
     //public WebDriver getDriver() {
