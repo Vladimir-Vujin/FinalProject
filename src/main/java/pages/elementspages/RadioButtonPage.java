@@ -36,14 +36,10 @@ public class RadioButtonPage extends BasePage {
     }
 
     public void clickRadioButtonYes() {
-        //new Actions(getRadioButtonYes()).click().perform();
-        //Actions action = new Actions(getDriver());
         action.moveToElement(getRadioButtonYes()).click().perform();
-        //getRadioButtonYes().click();
     }
 
     public void clickRadioButtonImpressive() {
-        //getRadioButtonImpressive().click();
         action.moveToElement(getRadioButtonImpressive()).click().perform();
     }
 

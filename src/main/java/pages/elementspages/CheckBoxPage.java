@@ -7,8 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.defaultpages.BasePage;
 
 public class CheckBoxPage extends BasePage {
-
-    private By checkBox = By.className("rct-checkbox");
+    private By checkBoxHome = By.className("rct-checkbox");
     private By resultLabel = By.id("result");
     private By expandIcon = By.xpath("//*[@id=\"tree-node\"]/div/button[1]");
     private By checkBoxOffice = By.xpath("//*[@id=\"tree-node\"]/ol/li/ol/li[2]/ol/li[2]/span/label/span[1]");
@@ -17,8 +16,8 @@ public class CheckBoxPage extends BasePage {
         super(driver, driverWait);
     }
 
-    public WebElement getCheckBox() {
-        return getDriver().findElement(checkBox);
+    public WebElement getCheckBoxHome() {
+        return getDriver().findElement(checkBoxHome);
     }
 
     public WebElement getResultLabel() {
@@ -33,16 +32,25 @@ public class CheckBoxPage extends BasePage {
         return getDriver().findElement(checkBoxOffice);
     }
 
-    public void clickCheckBox() {
-        getCheckBox().click();
+    public void clickCheckBoxHome() {
+        getCheckBoxHome().click();
     }
 
+    /**
+     * Method check if result label is displayed or not
+     * @return
+     */
     public boolean isResultLabelDisplayed() {
-        return getResultLabel().isDisplayed();
+        try {
+            getResultLabel().isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
     }
 
-    public boolean isCheckBoxChecked() {
-        return getCheckBox().isSelected();
+    public boolean isCheckBoxHomeChecked() {
+        return getCheckBoxHome().isSelected();
     }
 
     public void clickExpandIcon() {

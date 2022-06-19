@@ -13,6 +13,7 @@ public class ModalDialogsTests extends BaseTests {
         getDriver().navigate().to("https://demoqa.com/modal-dialogs");
     }
 
+    // TC54 - verify small modal dialog
     @Test(priority = 1)
     public void testSmallModalDialog(){
         modalDialogsPage.clickSmallModalButton();
@@ -21,6 +22,7 @@ public class ModalDialogsTests extends BaseTests {
         modalDialogsPage.clickCloseSmallModalButton();
     }
 
+    // TC54 - verify large modal dialog
     @Test(priority = 2)
     public void testLargeModalDialog(){
         modalDialogsPage.clickLargeModalButton();

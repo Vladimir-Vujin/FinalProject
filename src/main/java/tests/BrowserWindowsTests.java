@@ -11,24 +11,30 @@ public class BrowserWindowsTests extends BaseTests {
         getDriver().navigate().to("https://demoqa.com/browser-windows");
     }
 
+    // *** UNDER CONSTRUCTION ******************************************************************
+    // TESTS WORK INDIVIDUALLY, SECOND DO NOT WHEN RUN SIMULTANEOUSLY ***************************
+
+    // TC51 - verify that new tab opens
     @Test(priority = 1)
     public void checkOpenNewTab() {
         browserWindowsPage.clickTabButton();
         Assert.assertEquals(browserWindowsPage.getURLOfNewTab(), "https://demoqa.com/sample");
         Assert.assertEquals(samplePage.headerText(), "This is a sample page");
-        getDriver().close();
+        //getDriver().close();
     }
 
+    // TC51 - verify that new window opens
     @Test(priority = 2)
     public void checkOpenNewWindow() {
         browserWindowsPage.clickWindowButton();
         Assert.assertEquals(browserWindowsPage.getURLOfNewTab(), "https://demoqa.com/sample");
         Assert.assertEquals(samplePage.headerText(), "This is a sample page");
-        getDriver().close();
+        //getDriver().close();
     }
 
     // TEST IN CONSTRUCTION ********************************************************************
     // THIS TEST ALWAYS FAIL. PROBLEM WITH NEW WINDOW MESSAGE, CAN'T GET TEXT ***************
+    // TC51 - verify that new window message opens
     /* @Test(priority = 3)
     public void checkOpenNewWindowMessage(){
         browserWindowsPage.clickMessageWindowButton();

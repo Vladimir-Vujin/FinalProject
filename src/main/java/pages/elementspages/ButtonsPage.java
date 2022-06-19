@@ -85,25 +85,13 @@ public class ButtonsPage extends BasePage {
         action.contextClick(getClickButton()).perform();
     }
 
-    /*public boolean isVisibleDoubleClickMessage(){
-        return getDoubleClickMessage().isDisplayed();
-    }*/
-
     public String doubleClickMessageText(){
         return getDoubleClickMessage().getText();
     }
 
-    /*public boolean isVisibleRightClickMessage(){
-        return getRightClickMessage().isDisplayed();
-    }*/
-
     public String rightClickMessageText(){
         return getRightClickMessage().getText();
     }
-
-    /*public boolean isVisibleClickMessage(){
-        return getClickMessage().isDisplayed();
-    }*/
 
     public String clickMessageText(){
         return getClickMessage().getText();

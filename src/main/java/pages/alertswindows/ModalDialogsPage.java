@@ -8,7 +8,6 @@ import pages.defaultpages.BasePage;
 
 public class ModalDialogsPage extends BasePage {
 
-
     private By smallModalButton = By.id("showSmallModal");
     private By largeModalButton = By.id("showLargeModal");
     private By modalDialog = By.className("modal-dialog");

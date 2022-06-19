@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 
 public class BookStoreTests extends BaseTests {
 
+    // TC40 verify that user can register account
     @Test(priority = 1)
     public void registerNewUser() {
 
@@ -26,6 +27,7 @@ public class BookStoreTests extends BaseTests {
         Assert.assertEquals(profilePage.userNameLabelText(), "Vladimir78");
     }
 
+    // TC41 - verify that user can search books by author
     @Test(priority = 2)
     public void searchBookByAuthor() {
         getDriver().navigate().to("https://demoqa.com/books");
@@ -33,6 +35,7 @@ public class BookStoreTests extends BaseTests {
         Assert.assertTrue(booksPage.checkIfRecordSearchByAuthorExistInTable("Osmani"));
     }
 
+    // TC42 - verify that user can search books by book name
     @Test(priority = 3)
     public void searchBookByBookName() {
         getDriver().navigate().to("https://demoqa.com/books");
@@ -40,6 +43,7 @@ public class BookStoreTests extends BaseTests {
         Assert.assertTrue(booksPage.checkIfRecordSearchByBookExistInTable("Learning"));
     }
 
+    // TC43 - verify that user can click on boom and get detiled information
     @Test(priority = 4)
     public void getBookInfo() {
         getDriver().navigate().to("https://demoqa.com/books");
@@ -50,6 +54,7 @@ public class BookStoreTests extends BaseTests {
         Assert.assertEquals(getDriver().findElement(By.xpath("//*[@id=\"publisher-wrapper\"]/div[2]")).getText(), "O'Reilly Media");
     }
 
+    // TC44 - verify that user can logout
     @Test(priority = 5)
     public void userLogOut() {
         homePage.openLoginPage();
@@ -61,19 +66,20 @@ public class BookStoreTests extends BaseTests {
     //***********************************************************************************
     // UNDER CONSTRUCTION
     //***********************************************************************************
+    // User can delete registration account
     @Test(priority = 6)
     public void deleteUserAccount() {
         homePage.openLoginPage();
 
         loginPage.fillLoginForm("Vladimir78", "Vlada78*");
         driverWait.until(ExpectedConditions.urlContains("profile"));
-        //getDriver().navigate().to("https://demoqa.com/profile");
+
         profilePage.clickDeleteAccountButton();
         profilePage.clickConfirmDeleteButtonOnModal();
 
-        //driver.switchTo().alert().accept();
+        getDriverWait().until(ExpectedConditions.alertIsPresent());
+        getDriver().switchTo().alert().accept();
 
-        // PROBLEM WITH A POP UP MESSAGE CAN'T HANDLE!!!!!!!!!!!!!!!!!!!!!!!!!
         homePage.openLoginPage();
         loginPage.fillLoginForm("Vladimir78", "Vlada78*");
         Assert.assertEquals(loginPage.getLabelInvalidUserInfo().getText(), "Invalid username or password!");

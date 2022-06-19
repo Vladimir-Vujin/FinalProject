@@ -1,8 +1,6 @@
 package pages.defaultpages;
 
-import lombok.Data;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -27,22 +25,6 @@ public abstract class BasePage {
         jsExecutor.executeScript("window.scrollBy(0,500)");
     }
 
-    //public WebDriver getDriver() {
-    //    return driver;
-    //}
-
-    //public void setDriver(WebDriver driver) {
-    //    this.driver = driver;
-    //}
-
-    //public WebDriverWait getDriverWait() {
-    //    return driverWait;
-    //}
-
-    //public void setDriverWait(WebDriverWait driverWait) {
-    //    this.driverWait = driverWait;
-    //}
-
     public void openHomePage() {
         driver.navigate().to(HOME_URL);
     }
@@ -51,7 +33,7 @@ public abstract class BasePage {
         driver.navigate().to(ELEMENTS_URL);
     }
 
-    public void openLoginPage(){
+    public void openLoginPage() {
         driver.navigate().to(LOGIN_URL);
     }
 

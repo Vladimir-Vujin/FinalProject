@@ -1,11 +1,10 @@
 package pages.defaultpages;
 
-import lombok.Data;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
-@Data
+
 public class HomePage extends BasePage {
 
     private By elementsCard = By.xpath("//*[@id=\"app\"]/div/div/div[2]/div/div[1]");
@@ -43,27 +42,27 @@ public class HomePage extends BasePage {
         return getDriver().findElement(bookstoreCard);
     }
 
-    public void clickElementCard(){
+    public void clickElementCard() {
         getElementCard().click();
     }
 
-    public void clickFormCard(){
+    public void clickFormCard() {
         getFormCard().click();
     }
 
-    public void clickAlertCard(){
+    public void clickAlertCard() {
         getAlertCard().click();
     }
 
-    public void clickWidgetsCard(){
+    public void clickWidgetsCard() {
         getWidgetsCard().click();
     }
 
-    public void clickInteractionsCard(){
+    public void clickInteractionsCard() {
         getInteractionsCard().click();
     }
 
-    public void clickBookstoreCard(){
+    public void clickBookstoreCard() {
         getBookstoreCard().click();
     }
 }

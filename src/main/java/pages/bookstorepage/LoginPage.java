@@ -9,14 +9,12 @@ import pages.defaultpages.BasePage;
 
 public class LoginPage extends BasePage {
 
-
     private By userNameInputBox = By.id("userName");
     private By passwordInputBox = By.id("password");
     private By loginButton = By.id("login");
     private By newUserButton = By.id("newUser");
     private By labelInvalidUserInfo = By.className("mb-1");
     private By mainHeder = By.className("main-header");
-    //private By logOutButton = By.id("/html/body/div[2]/div/div/div[2]/div[2]/div[2]/div[1]/div/button");
     private By logOutButton = By.xpath("/html/body/div[2]/div/div/div[2]/div[2]/div[2]/div[1]/div/button");
 
     public LoginPage(WebDriver driver, WebDriverWait driverWait) {
@@ -82,7 +80,6 @@ public class LoginPage extends BasePage {
     }
 
     public void clickLogoutButton(){
-        //getLogOutButton().click();
         Actions action = new Actions(getDriver());
         action.moveToElement(getLogOutButton()).click().perform();
     }

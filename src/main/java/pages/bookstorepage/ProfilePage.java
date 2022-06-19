@@ -40,7 +40,6 @@ public class ProfilePage extends BasePage {
     }
 
     public void clickConfirmDeleteButtonOnModal(){
-        //((JavascriptExecutor) getDriver()).executeScript("arguments[0].click()", getConfirmDeleteButtonOnModal());
         getConfirmDeleteButtonOnModal().click();
     }
 }

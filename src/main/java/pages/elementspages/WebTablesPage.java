@@ -3,7 +3,6 @@ package pages.elementspages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.defaultpages.BasePage;
 
@@ -22,10 +21,6 @@ public class WebTablesPage extends BasePage {
 
     private By tableBody = By.className("rt-tbody");
     private By editRecord1Button = By.id("edit-record-1");
-    //private By deleteButton = By.id("delete-record-2");
-
-    // Ovo je xpath do action buttona brisanje i azuriranje
-    //*[@class = "rt-td"]/div[1]
 
     public WebTablesPage(WebDriver driver, WebDriverWait driverWait) {
         super(driver, driverWait);
@@ -161,27 +156,5 @@ public class WebTablesPage extends BasePage {
     public void clickDeleteButton(int row){
         getDriver().findElement(By.id("delete-record-" + row)).click();
     }
-
-    /*public List<WebElement> getTableRow(){
-        List<WebElement> records = getTableBody().findElements(By.className("rt-tr"));
-        return records;
-    }
-
-    public boolean checkIfEntityIsInTable(String firstName, String lastName, String email, String age,
-                                          String salary, String department){
-        List<WebElement> newRow = getTableRow().findElements(By.tagName("div"));
-        String firstNameData = newRow.get(0).getText();
-        String lastNameData = newRow.get(1).getText();
-        String ageData = newRow.get(2).getText();
-        String emailData = newRow.get(3).getText();
-        String salaryData = newRow.get(4).getText();
-        String departmentData = newRow.get(5).getText();
-        if (firstNameData.equals(firstName) && lastNameData.equals(lastName) && ageData.equals(age)
-                && emailData.equals(email) && salaryData.equals(salary) && departmentData.equals(department)){
-            return true;
-        }
-        return false;
-    }*/
-
 
 }

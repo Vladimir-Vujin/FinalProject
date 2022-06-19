@@ -23,7 +23,7 @@ public class BrokenPage extends BasePage {
     }
 
     public WebElement getBrokenImage() {
-        return getDriver().findElement(validImage);
+        return getDriver().findElement(brokenImage);
     }
 
     public WebElement getValidLink() {

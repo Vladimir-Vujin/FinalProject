@@ -6,7 +6,6 @@ import pages.defaultpages.BasePage;
 
 public class AlertsWindowsPage extends BasePage {
 
-
     public AlertsWindowsPage(WebDriver driver, WebDriverWait driverWait) {
         super(driver, driverWait);
     }
