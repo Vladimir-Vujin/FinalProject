@@ -7,10 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import pages.alertswindows.AlertsWindowsPage;
-import pages.alertswindows.AlertsPage;
-import pages.alertswindows.BrowserWindowsPage;
-import pages.alertswindows.SamplePage;
+import pages.alertswindows.*;
 import pages.bookstorepage.*;
 import pages.defaultpages.HomePage;
 import pages.elementspages.*;
@@ -46,8 +43,29 @@ public class BaseTests {
     AlertsWindowsPage alertsFrameWindowsPage;
     BrowserWindowsPage browserWindowsPage;
     SamplePage samplePage;
+    BrokenPage brokenPage;
+    Status500Page status500Page;
+    ModalDialogsPage modalDialogsPage;
 
     Alert alert;
+
+    private String fullName = "Vladimir Vujin";
+    private String email = "vujin@gmail.com";
+    private String invalidEmail = "vujingmail.com";
+    private String currentAddress = "Istarska bb";
+    private String permanentAddress = "Istarska 100";
+    private String firstName = "Petar";
+    private String lastName = "Petrovic";
+    private String age = "40";
+    private String emailT = "ptrptr@gmail.com";
+    private String salary = "50000";
+    private String department = "Economy";
+    private String firstName2 = "Jovan";
+    private String lastName2 = "Jovanovic";
+    private String age2 = "20";
+    private String emailT2 = "jovica@gmail.com";
+    private String salary2 = "20000";
+    private String department2 = "Philosophy";
 
     @BeforeClass
     public void setUp() {
@@ -79,45 +97,12 @@ public class BaseTests {
         this.profilePage = new ProfilePage(driver, driverWait);
         this.booksPage = new BooksPage(driver, driverWait);
         this.alertsFrameWindowsPage = new AlertsWindowsPage(driver, driverWait);
-        this.browserWindowsPage = new BrowserWindowsPage(driver,driverWait);
+        this.browserWindowsPage = new BrowserWindowsPage(driver, driverWait);
         this.samplePage = new SamplePage(driver, driverWait);
+        this.brokenPage = new BrokenPage(driver, driverWait);
+        this.status500Page = new Status500Page(driver, driverWait);
+        this.modalDialogsPage = new ModalDialogsPage(driver, driverWait);
     }
-
-    //public WebDriver getDriver() {
-    //    return driver;
-    //}
-
-    //public WebDriverWait getDriverWait() {
-    //    return driverWait;
-    //}
-
-    //public HomePage getHomePage() {
-    //    return homePage;
-    //}
-
-    //public ElementsPage getElementsPage() {
-    //    return elementsPage;
-    //}
-
-    //public FormsPage getFormsPage() {
-    //    return formsPage;
-    //}
-
-    //public AlertsPage getAlertsPagePage() {
-    //    return alertsPage;
-    //}
-
-    //public WidgetsPage getWidgetsPage() {
-    //    return widgetsPage;
-    //}
-
-    //public InteractionsPage getInteractionsPage() {
-    //    return interactionsPage;
-    //}
-
-    //public BookStorePage getBookStorePage() {
-    //    return bookStorePage;
-    //}
 
     @AfterClass
     public void afterClass() {

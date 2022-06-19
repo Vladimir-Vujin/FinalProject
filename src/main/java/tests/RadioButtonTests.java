@@ -12,10 +12,12 @@ public class RadioButtonTests extends BaseTests {
 
         radioButtonPage.clickRadioButtonYes();
         Assert.assertEquals(radioButtonPage.getLabelText(), "Yes");
+        Assert.assertTrue(radioButtonPage.getRadioButtonYes().isSelected());
         Assert.assertFalse(radioButtonPage.getRadioButtonImpressive().isSelected());
 
         radioButtonPage.clickRadioButtonImpressive();
         Assert.assertEquals(radioButtonPage.getLabelText(), "Impressive");
+        Assert.assertTrue(radioButtonPage.getRadioButtonImpressive().isSelected());
         Assert.assertFalse(radioButtonPage.getRadioButtonYes().isSelected());
 
         Assert.assertFalse(radioButtonPage.isRadioButtonNoEnabled());

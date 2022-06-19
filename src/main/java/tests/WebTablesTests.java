@@ -15,27 +15,35 @@ public class WebTablesTests extends BaseTests {
     @Test(priority = 1)
     public void testAddNewRecordToTable() {
         webTablesPage.clickAddButton();
-        webTablesPage.fillRegistrationForm("Petar", "Petrovic", "40",
-                "ptrptr@gmail.com", "50000", "Legal");
+
+        webTablesPage.fillRegistrationForm(getFirstName(), getLastName(), getAge(), getEmailT(), getSalary(), getDepartment());
 
         // Check new records
-        Assert.assertTrue(webTablesPage.checkIfRecordExistInTable("Petar", "Petrovic", "40",
-                "ptrptr@gmail.com", "50000", "Legal"));
+        Assert.assertTrue(webTablesPage.checkIfRecordExistInTable(getFirstName(), getLastName(), getAge(),
+                getEmailT(), getSalary(), getDepartment()));
     }
 
     @Test(priority = 2)
     public void testUpdateRecordInTable() {
         webTablesPage.clickEditRecord1Button();
-        webTablesPage.clearAndFillRegistrationFormFields("Jovan", "Jovanovic", "20",
-                "jovica@gmail.com", "20000", "Philosophy");
+
+        webTablesPage.clearAndFillRegistrationFormFields(getFirstName2(), getLastName2(), getAge2(),
+                getEmailT2(), getSalary2(), getDepartment2());
+
         // Check update records
-        Assert.assertTrue(webTablesPage.checkIfRecordExistInTable("Jovan", "Jovanovic", "20",
-                "jovica@gmail.com", "20000", "Philosophy"));
+        Assert.assertTrue(webTablesPage.checkIfRecordExistInTable(getFirstName2(), getLastName2(), getAge2(),
+                getEmailT2(), getSalary2(), getDepartment2()));
     }
 
     @Test(priority = 3)
     public void testDeleteRecordFromTable() {
         int numberOfRow = webTablesPage.countNumberOfRecords();
+        webTablesPage.clickDeleteButton(3);
+
+        // Check number of records in table
+        Assert.assertEquals(webTablesPage.countNumberOfRecords(), numberOfRow - 1);
+
+        numberOfRow = webTablesPage.countNumberOfRecords();
         webTablesPage.clickDeleteButton(2);
 
         // Check number of records in table
@@ -49,7 +57,4 @@ public class WebTablesTests extends BaseTests {
     }
 }
 
-// PATH ZA ALERTS
-//*[@id=\"app\"]/div/div/div[2]/div[1]/div/div/div[3]/div/ul/li[2]
-// By.xpath("//*[text()='Alerts']");
 

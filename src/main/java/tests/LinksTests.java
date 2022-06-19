@@ -15,14 +15,11 @@ public class LinksTests extends BaseTests {
     public void testLinkHome(){
         linksPage.clickHomeLink();
 
-        //Store ID of original window
         String originalWindow = getDriver().getWindowHandle();
 
         Assert.assertEquals(linksPage.getURLForNewOpenTab(), "https://demoqa.com/");
 
-        // Close new opened tab
         getDriver().close();
-        // Return to original window
         getDriver().switchTo().window(originalWindow);
     }
 
@@ -30,14 +27,11 @@ public class LinksTests extends BaseTests {
     public void testLinkHomeDynamic(){
         linksPage.clickHomeDynamicLink();
 
-        //Store ID of original window
         String originalWindow = getDriver().getWindowHandle();
 
         Assert.assertEquals(linksPage.getURLForNewOpenTab(), "https://demoqa.com/");
 
-        // Close new opened tab
         getDriver().close();
-        // Return to original window
         getDriver().switchTo().window(originalWindow);
     }
 

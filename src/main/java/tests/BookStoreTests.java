@@ -8,40 +8,40 @@ import org.testng.annotations.Test;
 public class BookStoreTests extends BaseTests {
 
     @Test(priority = 1)
-    public void registerNewUser(){
+    public void registerNewUser() {
 
         homePage.clickBookstoreCard();
         bookStorePage.clickLoginButton();
         loginPage.clickNewUserButton();
 
         // IMPORTANT NOTES: *************************************************************
-        // In this test you must click on captcha pictures manually to resume tests!
+        // IN THIS TEST YOU MUST CLICK ON CAPTCHA PICTURES MANUALLY TO RESUME TESTS!
         // ******************************************************************************
         registerNewUserPage.fillRegisterForm("Vladimir", "Vujin", "Vladimir78", "Vlada78*");
 
         homePage.openLoginPage();
         loginPage.fillLoginForm("Vladimir78", "Vlada78*");
         driverWait.until(ExpectedConditions.urlContains("profile"));
-        Assert.assertEquals(getDriver().getCurrentUrl(),"https://demoqa.com/profile");
+        Assert.assertEquals(getDriver().getCurrentUrl(), "https://demoqa.com/profile");
         Assert.assertEquals(profilePage.userNameLabelText(), "Vladimir78");
     }
 
     @Test(priority = 2)
-    public void searchBookByAuthor(){
+    public void searchBookByAuthor() {
         getDriver().navigate().to("https://demoqa.com/books");
         booksPage.inputSearchBox("Osmani");
         Assert.assertTrue(booksPage.checkIfRecordSearchByAuthorExistInTable("Osmani"));
     }
 
     @Test(priority = 3)
-    public void searchBookByBookName(){
+    public void searchBookByBookName() {
         getDriver().navigate().to("https://demoqa.com/books");
         booksPage.inputSearchBox("Learning");
         Assert.assertTrue(booksPage.checkIfRecordSearchByBookExistInTable("Learning"));
     }
 
     @Test(priority = 4)
-    public void getBookInfo(){
+    public void getBookInfo() {
         getDriver().navigate().to("https://demoqa.com/books");
         booksPage.clickLinkOfThirdBook();
         Assert.assertEquals(getDriver().findElement(By.xpath("//*[@id=\"title-wrapper\"]/div[2]")).getText(),
@@ -51,17 +51,29 @@ public class BookStoreTests extends BaseTests {
     }
 
     @Test(priority = 5)
-    public void deleteUserAccount(){
+    public void userLogOut() {
+        homePage.openLoginPage();
+        loginPage.clickLogoutButton();
+        Assert.assertEquals(getDriver().getCurrentUrl(), "https://demoqa.com/login");
+        Assert.assertEquals(loginPage.mainHeaderText(), "Login");
+    }
+
+    //***********************************************************************************
+    // UNDER CONSTRUCTION
+    //***********************************************************************************
+    @Test(priority = 6)
+    public void deleteUserAccount() {
         homePage.openLoginPage();
 
         loginPage.fillLoginForm("Vladimir78", "Vlada78*");
         driverWait.until(ExpectedConditions.urlContains("profile"));
-
+        //getDriver().navigate().to("https://demoqa.com/profile");
         profilePage.clickDeleteAccountButton();
         profilePage.clickConfirmDeleteButtonOnModal();
 
-         //  PROBLEM WITH A POP UP MESSAGE CAN'T HANDLE!!!!!!!!!!!!!!!!!!!!!!!!!
-        // OVDE STAJE PROGRAM VIDI KAKO DA RESIS
+        //driver.switchTo().alert().accept();
+
+        // PROBLEM WITH A POP UP MESSAGE CAN'T HANDLE!!!!!!!!!!!!!!!!!!!!!!!!!
         homePage.openLoginPage();
         loginPage.fillLoginForm("Vladimir78", "Vlada78*");
         Assert.assertEquals(loginPage.getLabelInvalidUserInfo().getText(), "Invalid username or password!");

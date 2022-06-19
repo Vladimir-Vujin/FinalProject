@@ -1,6 +1,7 @@
 package pages.elementspages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -47,39 +48,91 @@ public class ButtonsPage extends BasePage {
         return getDriver().findElement(clickMessage);
     }
 
-    public void clickDoubleClickButton(){
+    public void clickDoubleClickButtonDoubleClick(){
         action.moveToElement(getDoubleClickButton()).doubleClick().perform();
     }
 
-    public void clickRightClickButton(){
+    public void clickDoubleClickButtonSingleClick(){
+        getDoubleClickButton().click();
+    }
+
+    public void clickDoubleClickButtonRightClick(){
+        action.contextClick(getDoubleClickButton()).perform();
+    }
+
+
+    public void clickRightClickButtonRightClick(){
         action.contextClick(getRightClickButton()).perform();
     }
 
-    public void clickClickButton(){
+    public void clickRightClickButtonSingleClick(){
+        getRightClickButton().click();
+    }
+
+    public void clickRightClickButtonDoubleClick(){
+        action.moveToElement(getRightClickButton()).doubleClick().perform();
+    }
+
+    public void clickClickButtonSingleClick(){
         action.moveToElement(getClickButton()).click().perform();
     }
 
-    public boolean isVisibleDoubleClickMessage(){
-        return getDoubleClickMessage().isDisplayed();
+    public void clickClickButtonDoubleClick(){
+        action.moveToElement(getClickButton()).doubleClick().perform();
     }
+
+    public void clickClickButtonRightClick(){
+        action.contextClick(getClickButton()).perform();
+    }
+
+    /*public boolean isVisibleDoubleClickMessage(){
+        return getDoubleClickMessage().isDisplayed();
+    }*/
 
     public String doubleClickMessageText(){
         return getDoubleClickMessage().getText();
     }
 
-    public boolean isVisibleRightClickMessage(){
+    /*public boolean isVisibleRightClickMessage(){
         return getRightClickMessage().isDisplayed();
-    }
+    }*/
 
     public String rightClickMessageText(){
         return getRightClickMessage().getText();
     }
 
-    public boolean isVisibleClickMessage(){
+    /*public boolean isVisibleClickMessage(){
         return getClickMessage().isDisplayed();
-    }
+    }*/
 
     public String clickMessageText(){
         return getClickMessage().getText();
+    }
+
+    public boolean checkIsDoubleClickMessageExist(){
+        try {
+            getDoubleClickMessage();
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    public boolean checkIsRightClickMessageExist(){
+        try {
+            getRightClickMessage();
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    public boolean checkIsClickMessageExist(){
+        try {
+            getClickMessage();
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
 }
